@@ -1,0 +1,29 @@
+1、在https://github.com注册github账号
+2、下载安装Git软件
+3、使用git上传本地项目到github上
+     3.1  打开git bash
+     3.2  生成自己的公钥与私钥(Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置)
+            输入 ssh-keygen -t rsa -C "Github 的注册邮箱" ， 一路默认回车，会生成公钥、私钥到以下文件夹下id_rsa是私钥，id_rsa.pub是公钥
+     3.3  浏览器进入自己的github，打开设置，进入ssh and GPG keys，点击NEW ssh key，自己填个标题，下面内容复制id_rsa.pub公钥文件内全部内容，最后点击添加(上传代码时使用这个 sshkey 来确认是否有上传权限 ,)
+            注：你会收到一份邮件（你注册github的邮件）
+     3.4  key添加好后测试git能否与github连接
+            输入 ssh -T git@github.com，再输入yes，后面可以看到Hi XXXX..... access 表示成功。
+     3.5  连接成功后，需要设置用户信息(随意设置，上传本地 repository 到服务器上的时候，在 Github 上会显示这里配置的上传者用户信息)
+            输入 git config --global user.name "XXX"
+            输入 git config --global user.email "自己的邮箱地址@XXX.com"
+            输入 git config --list 可以查看配置列表
+     3.6  到浏览器github上创建个项目（复制创建成功的SSH,如git@github.com:winter/helloworld.git），然后将本地项目上传至此项目中
+            3.6.1 创建本地仓库(repository)，比如：D:\github\personal\test（在此目录下存放你的项目） ,先回到git bash
+	     输入 cd D:\github\personal\test
+                     输入 git init   （创建本地仓库(repository)，将会在文件夹下创建一个 .git 文件夹，.git 文件夹里存储了所有的版本信息、标记等内容） 
+	     输入 git remote add origin git@github.com:winter/helloworld.git （把本地仓库和远程仓库关联起来。如果不执行这个命令的话，每次 push 的时候都需要指定远程服务器的地址）
+            3.6.2 开始上传项目，此后每次push都执行以下步骤
+	     输入 git add .  ( 从本地仓库增删，结果将会保存到本机的缓存里面)
+	     输入 git commit -m "注释" （提交到本地库，本机缓存中的内容提交到本机的 HEAD 里面）
+                     输入 git push origin master (把本地的 commit(提交) push 到远程服务器上， origin 也就是之前 git remote add origin 那个命令里面的 origin，origin 替代了服务器仓库地址：git push git@github.com:winter/helloworld.git master)
+            3.6.3 可能出现的问题	failed to push some refs to git
+	     出现错误的主要原因是github中的README.md文件不在本地代码目录中
+                     输入 git pull --rebase origin master  （代码合并，可以看到本地代码库中多了README.md文件）
+	     再上传 git push origin master
+4、使用git从github拉项目或从远程仓库中下载新的改动
+      git pull origin master       
