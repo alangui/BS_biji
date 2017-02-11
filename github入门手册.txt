@@ -3,7 +3,7 @@
 3、使用git上传本地项目到github上
      3.1  打开git bash
      3.2  生成自己的公钥与私钥(Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置)
-            输入 ssh-keygen -t rsa -C "Github 的注册邮箱" ， 一路默认回车，会生成公钥、私钥到以下文件夹下id_rsa是私钥，id_rsa.pub是公钥
+            输入 ssh-keygen -t rsa -C "Github 的注册邮箱" ， 一路默认回车，会生成公钥、私钥到git bash显示的文件夹下,其中id_rsa是私钥，id_rsa.pub是公钥
      3.3  浏览器进入自己的github，打开设置，进入ssh and GPG keys，点击NEW ssh key，自己填个标题，下面内容复制id_rsa.pub公钥文件内全部内容，最后点击添加(上传代码时使用这个 sshkey 来确认是否有上传权限 ,)
             注：你会收到一份邮件（你注册github的邮件）
      3.4  key添加好后测试git能否与github连接
