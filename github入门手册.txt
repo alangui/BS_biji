@@ -1,5 +1,5 @@
 1、在https://github.com注册github账号
-2、下载安装Git软件
+2、下载安装Git软件(百度)
 3、使用git上传本地项目到github上
      3.1  打开git bash
      3.2  生成自己的公钥与私钥(Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置)
